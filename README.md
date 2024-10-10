@@ -1,5 +1,5 @@
 # FFT-based CBS
-This is an FFT-based implementation of 'FHEW-like Leveled Homomoprhic Evaluation: Refined Workflow and POlished Building Blocks'.
+This is an FFT-based implementation of ['FHEW-like Leveled Homomoprhic Evaluation: Refined Workflow and Polished Building Blocks'](https://eprint.iacr.org/2024/1318).
 
 ## Contents
 We implement:
