@@ -1,0 +1,43 @@
+[package]
+name = "auto-base-conv"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tfhe = { version = "0.5.3", features = ["boolean", "shortint", "x86_64-unix"] }
+rand = { version = "*" }
+aligned-vec = { version = "0.5.0" }
+dyn-stack = { version = "0.9" }
+aes = { version = "*" }
+rayon = { version = "*", optional = true }
+pulp = "0.18.8"
+lazy_static = "1.4"
+
+[dev-dependencies]
+criterion = { version = "0.4", features = ["html_reports"] }
+concrete-fft = { version = "0.4.0", features = ["serde"] }
+
+[[bench]]
+name = "bench_aes"
+harness = false
+
+[[bench]]
+name = "bench_aes_half_cbs"
+harness = false
+
+[[bench]]
+name = "bench_cbs"
+harness = false
+
+[[bench]]
+name = "bench_hp_lhe"
+harness = false
+
+
+[features]
+default = ["monothread"]
+monothread = []
+multithread = ["rayon"]
+nightly-avx512 = ["concrete-fft/nightly", "pulp/nightly"]
