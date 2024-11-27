@@ -100,7 +100,7 @@ for param in param_list:
     Var_ss = get_var_ss(N, k, q, q^2 * Var_GLWE, B_ss, l_ss)
     Var_ss_gadget = get_var_ss_gadget(N, k, q, B_ss, l_ss)
     Var_ss_key = get_var_ss_inc(N, k, q^2 * Var_GLWE, B_ss, l_ss)
-    Var_fft_ss = get_var_fft_ext_prod(N, k, q, B_ss, l_ss)
+    Var_fft_ss = get_var_fft_ss(N, k, q, B_ss, l_ss)
     Var_ss_tot = Var_ss + Var_fft_ss
 
     print(f"Var_ss_tot: 2^{log(Var_ss_tot, 2).n():.4f}")
@@ -136,7 +136,7 @@ for param in param_list:
     for log_fp_thrs in log_fp_thrs_list:
         log_var_thrs = find_var_thrs(n, q, N, theta, delta_in, log_fp_thrs)
         Var_thrs = 2^log_var_thrs
-        max_depth = ((Var_thrs - Var_lwe_ks) / Var_add).n()
+        max_depth = ((Var_thrs - Var_lwe_ks) / Var_add_tot).n()
         print(f"  - F.P. of 2^{log_fp_thrs}: {max_depth}")
     print()
 
